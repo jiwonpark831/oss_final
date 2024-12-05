@@ -10,7 +10,7 @@ export default function List() {
     const [tempList, setTempList] = useState(defaultList);
 
     const getList = () => {
-        axios.get("https://672818a9270bd0b975544f25.mockapi.io/api/v1/my_data")
+        axios.get("https://672818a9270bd0b975544f25.mockapi.io/api/v1/finalproject")
             .then((response) => {
                 console.log(JSON.stringify(response.data));
                 setTempList(response.data)

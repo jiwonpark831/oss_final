@@ -5,32 +5,43 @@ import { Link } from "react-router-dom";
 
 export default function Update() {
     const [id, setId] = useState("");
-    const titleR = useRef();
-    const peopleR = useRef();
-    const yearR = useRef();
+    const nameR = useRef();
+    const salepriceR = useRef();
+    const priceR = useRef();
+    const salepercentR = useRef();
+    const dtimeR = useRef();
+    const storenameR = useRef();
+    const categoryR = useRef();
 
     const updateList = () => {
-        if (!titleR.current.value) {
-            alert("타이틀을 입력하세요");
+        if (!nameR.current.value) {
+            alert("상품명을 입력하세요");
             return;
         }
-        if (!peopleR.current.value) {
-            alert("관객수를 입력하세요");
+        if (!salepriceR.current.value) {
+            alert("가격을 입력하세요");
             return;
         }
-        if (!yearR.current.value) {
-            alert("개봉년도를 입력하세요");
+        if (!dtimeR.current.value) {
+            alert("폐기까지 남은 시간을 입력하세요");
             return;
         }
-
+        if (!storenameR.current.value) {
+            alert("편의점 이름을 입력하세요");
+            return;
+        }
 
         const dataUpdate = {
-            title: titleR.current.value,
-            people: peopleR.current.value,
-            year: yearR.current.value,
+            name: nameR.current.value,
+            saleprice: salepriceR.current.value,
+            price: priceR.current.value,
+            salepercent: salepercentR.current.value,
+            dtime: dtimeR.current.value,
+            storename: storenameR.current.value,
+            category: categoryR.current.value
         };
 
-        axios.put(`https://672818a9270bd0b975544f25.mockapi.io/api/v1/my_data/${id}`, dataUpdate)
+        axios.put(`https://672818a9270bd0b975544f25.mockapi.io/api/v1/finalproject/${id}`, dataUpdate)
             .then((response) => {
                 console.log(response);
                 alert("업데이트되었습니다.");
@@ -47,17 +58,34 @@ export default function Update() {
                 <p>ID:</p>
                 <input type="text" value={id} onChange={(e) => setId(e.target.value)} />
             </div>
+
             <div>
-                <p>제목:</p>
-                <input ref={titleR} type="text" />
+                <p>상품명:</p>
+                <input ref={nameR} type="text" />
             </div>
             <div>
-                <p>관객수:</p>
-                <input ref={peopleR} type="number" />
+                <p>가격:</p>
+                <input ref={salepriceR} type="number" />
             </div>
             <div>
-                <p>개봉년도:</p>
-                <input ref={yearR} type="number" />
+                <p>원가:</p>
+                <input ref={priceR} type="number" />
+            </div>
+            <div>
+                <p>할인율:</p>
+                <input ref={salepercentR} type="number" />
+            </div>
+            <div>
+                <p>폐기까지 남은 시간:</p>
+                <input ref={dtimeR} type="number" />
+            </div>
+            <div>
+                <p>편의점 이름:</p>
+                <input ref={storenameR} type="text" />
+            </div>
+            <div>
+                <p>카테고리:</p>
+                <input ref={categoryR} type="text" />
             </div>
             <button onClick={updateList}>Update</button>
             <br />    <br />

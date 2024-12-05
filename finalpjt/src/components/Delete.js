@@ -8,7 +8,7 @@ export default function Delete() {
     const [id, setId] = useState("");
 
     const axios_delete = () => {
-        axios.delete(`https://672818a9270bd0b975544f25.mockapi.io/api/v1/my_data/${id}`)
+        axios.delete(`https://672818a9270bd0b975544f25.mockapi.io/api/v1/finalproject/${id}`)
             .then((response) => {
                 alert("삭제되었습니다.");
                 console.log(response);

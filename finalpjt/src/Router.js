@@ -18,7 +18,8 @@ export default function Router() {
                 <Route path='/detail' element={<Detail />} />
                 <Route path='/delete' element={<Delete />} />
                 <Route path='/create' element={<Create />} />
-                 <Route path='/manage' element={<Manager />} />
+                <Route path='/manage' element={<Manager />} />
+                <Route path='/detail/:id' element={<Detail />} />
             </Routes>
         </BrowserRouter>
     );
