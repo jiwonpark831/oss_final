@@ -6,6 +6,7 @@ import Update from "./components/Update.js";
 import Detail from "./components/Detail.js";
 import Delete from "./components/Delete.js";
 import Create from "./components/Create.js";
+import Manager from "./components/Manager.js";
 
 export default function Router() {
     return (
@@ -17,6 +18,7 @@ export default function Router() {
                 <Route path='/detail' element={<Detail />} />
                 <Route path='/delete' element={<Delete />} />
                 <Route path='/create' element={<Create />} />
+                 <Route path='/manage' element={<Manager />} />
             </Routes>
         </BrowserRouter>
     );

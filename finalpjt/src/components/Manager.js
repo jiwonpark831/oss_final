@@ -1,20 +1,36 @@
 import React from 'react'
+import { Link } from "react-router-dom";
+import { useState } from 'react';
+import axios from "axios";
 
 export default function Manager() {
-    return (<>
-        <button data-bs-toggle="modal" data-bs-target="#exampleModal">추가하기</button>
-        <Create create={create} setCreate={setCreate} createStock={createStock} />
-        <br />
-        <br />
-        <button onClick={getStock}>목록 보기</button>
-        <List list={list} />
-        <br />
-        <br />
-        <button data-bs-toggle="modal" data-bs-target="#exampleModal2">수정하기</button>
-        <Update update={update} setUpdate={setUpdate} updateStock={updateStock} />
-        <br />
-        <br />
-        <Delete deletem={deletem} setDeletem={setDeletem} deleteStock={deleteStock} />
+
+  let defaultList = [];
+
+  const [tempList, setTempList] = useState(defaultList);
+
+  const getList = () => {
+    axios.get("https://672818a9270bd0b975544f25.mockapi.io/api/v1/my_data")
+      .then((response) => {
+        console.log(JSON.stringify(response.data));
+        setTempList(response.data)
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+  }
+
+  return (
+    <>
+      <div>{tempList.map((each) => <div><input value={each.title} /></div>)} </div>
+      <button onClick={getList}>call list</button>
+      <br />     <br />
+      <Link to="/create">Create</Link>
+      <br />
+      <Link to="/update">Update</Link>
+      <br />
+      <Link to="/delete">Delete</Link>
+
     </>
-    )
+  )
 }
