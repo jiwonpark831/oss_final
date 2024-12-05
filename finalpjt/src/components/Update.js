@@ -1,29 +1,69 @@
 import React from 'react'
+import axios from "axios";
+import { useState, useRef } from "react";
+import { Link } from "react-router-dom";
 
-export default function Update({ update, setUpdate, updateStock }) {
+export default function Update() {
+    const [id, setId] = useState("");
+    const titleR = useRef();
+    const peopleR = useRef();
+    const yearR = useRef();
+
+    const updateList = () => {
+        if (!titleR.current.value) {
+            alert("타이틀을 입력하세요");
+            return;
+        }
+        if (!peopleR.current.value) {
+            alert("관객수를 입력하세요");
+            return;
+        }
+        if (!yearR.current.value) {
+            alert("개봉년도를 입력하세요");
+            return;
+        }
+
+
+        const dataUpdate = {
+            title: titleR.current.value,
+            people: peopleR.current.value,
+            year: yearR.current.value,
+        };
+
+        axios.put(`https://672818a9270bd0b975544f25.mockapi.io/api/v1/my_data/${id}`, dataUpdate)
+            .then((response) => {
+                console.log(response);
+                alert("업데이트되었습니다.");
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+    };
+
     return (
-        <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel2">상품 수정</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        수정할 ID <input type="text" name="id" value={update.id} onChange={(e) => setUpdate({ ...update, id: e.target.value })} />
-                        <br />
-                        새 제목 <input type="text" name="title" value={update.title} onChange={(e) => setUpdate({ ...update, title: e.target.value })} />
-                        <br />
-                        새 개봉년도 <input type="number" name="year" value={update.year} onChange={(e) => setUpdate({ ...update, year: e.target.value })} />
-                        <br />
-                        새 관객수 <input type="number" name="people" value={update.people} onChange={(e) => setUpdate({ ...update, people: e.target.value })} />
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
-                        <button type="button" class="btn btn-primary" onClick={updateStock}>수정하기</button>
-                    </div>
-                </div>
+        <>
+            <h1>Update page</h1>
+            <div>
+                <p>ID:</p>
+                <input type="text" value={id} onChange={(e) => setId(e.target.value)} />
             </div>
-        </div>
+            <div>
+                <p>제목:</p>
+                <input ref={titleR} type="text" />
+            </div>
+            <div>
+                <p>관객수:</p>
+                <input ref={peopleR} type="number" />
+            </div>
+            <div>
+                <p>개봉년도:</p>
+                <input ref={yearR} type="number" />
+            </div>
+            <button onClick={updateList}>Update</button>
+            <br />    <br />
+            <Link to="/manage">뒤로가기</Link>
+            <br />    <br />
+        </>
     )
 }
+
