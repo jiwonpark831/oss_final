@@ -27,7 +27,14 @@ export default function Default() {
 
     return (
         <>
-            <table border="1" style={{ width: '50%', textAlign: 'center', borderCollapse: 'collapse' }}>
+            <div style={{ textAlign: 'center', margin: '90px 0' }}>
+                <img src="/logo.png" alt="로고" style={{ width: '350px', height: 'auto' }} />
+            </div>
+            <div className="buttonbox">
+                <Link to="/WaterMeasurePage" className="button">수질 측정 정보 보기!</Link>
+            </div>
+
+            <table style={{ width: '800px', margin: '0 auto', backgroundColor: 'white', borderRadius: '8px' }}>
                 <thead>
                     <tr>
                         <th>이름</th>
@@ -37,7 +44,7 @@ export default function Default() {
                 </thead>
                 <tbody>
                     {tempList.map((each) => (
-                        <tr key={each.id} onClick={() => goDetail(each.id)} style={{ cursor: 'pointer' }}>
+                        <tr key={each.id} onClick={() => goDetail(each.id)}>
                             <td>{each.name}</td>
                             <td>{each.saleprice}</td>
                             <td>{each.dtime}</td>
@@ -45,7 +52,10 @@ export default function Default() {
                     ))}
                 </tbody>
             </table>
-            <Link to="/manage">매니저모드</Link>
+
+            <div className="linking">
+                <Link to="/manage" className="link">매니저모드</Link>
+            </div>
 
 
         </>

@@ -11,6 +11,7 @@ export default function Create() {
     const dtimeR = useRef();
     const storenameR = useRef();
     const categoryR = useRef();
+    const scoreR = useRef();
 
 
     const uploadStock = () => {
@@ -39,7 +40,8 @@ export default function Create() {
             salepercent: salepercentR.current.value,
             dtime: dtimeR.current.value,
             storename: storenameR.current.value,
-            category: categoryR.current.value
+            category: categoryR.current.value,
+            score: scoreR.current.value,
         };
 
 
@@ -55,40 +57,47 @@ export default function Create() {
 
     return (
         <div>
-            <h1>Create Page</h1>
-            <div>
-                <p>상품명:</p>
-                <input ref={nameR} type="text" />
+            <h1>상품 등록</h1>
+            <div className="fieldd">
+                <label>상품명</label>
+                <input ref={nameR} type="text" className="inputstyle" />
             </div>
-            <div>
-                <p>가격:</p>
-                <input ref={salepriceR} type="number" />
+            <div className="fieldd">
+                <label>가격</label>
+                <input ref={salepriceR} type="number" className="inputstyle" />
             </div>
-            <div>
-                <p>원가:</p>
-                <input ref={priceR} type="number" />
+            <div className="fieldd">
+                <label>원가</label>
+                <input ref={priceR} type="number" className="inputstyle" />
             </div>
-            <div>
-                <p>할인율:</p>
-                <input ref={salepercentR} type="number" />
+            <div className="fieldd">
+                <label>할인율</label>
+                <input ref={salepercentR} type="number" className="inputstyle" />
             </div>
-            <div>
-                <p>폐기까지 남은 시간:</p>
-                <input ref={dtimeR} type="number" />
+            <div className="fieldd">
+                <label>폐기까지 남은 시간</label>
+                <input ref={dtimeR} type="number" className="inputstyle" />
             </div>
-            <div>
-                <p>편의점 이름:</p>
-                <input ref={storenameR} type="text" />
+            <div className="fieldd">
+                <label>편의점 이름</label>
+                <input ref={storenameR} type="text" className="inputstyle" />
             </div>
-            <div>
-                <p>카테고리:</p>
-                <input ref={categoryR} type="text" />
+            <div className="fieldd">
+                <label>카테고리</label>
+                <input ref={categoryR} type="text" className="inputstyle" />
             </div>
-            <button onClick={uploadStock}>상품 등록하기</button>
+            <div className="fieldd">
+                <label>평점</label>
+                <input ref={scoreR} type="number" className="inputstyle" />
+            </div>
+            <br />
+            <br />
+            <button className="button submit" onClick={uploadStock}>상품 등록하기</button>
 
-            <br />    <br />
-            <Link to="/manage">뒤로가기</Link>
-            <br />    <br />
+            <br />
+            <div className="linking">
+                <Link to="/manage" className="link">매니저 모드로 돌아가기</Link>
+            </div>
 
         </div>
     )

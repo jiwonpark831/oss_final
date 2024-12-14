@@ -22,34 +22,55 @@ export default function Manager() {
 
   return (
     <>
-      <table border="1" style={{ width: '50%', textAlign: 'center', borderCollapse: 'collapse' }}>
+      <h1>매니저 모드</h1>
+      <br />
+      <div style={{ display: 'flex' }}>
+        <div className="buttonbox">
+          <Link to="/create" className="button">상품 등록</Link>
+        </div>
+        <div className="buttonbox">
+          <Link to="/update" className="button">상품 수정</Link>
+        </div>
+        <div className="buttonbox">
+          <Link to="/delete" className="button">상품 삭제</Link>
+        </div>
+      </div>
+      <br></br>
+
+      <table style={{ width: '900px', margin: '0 auto', backgroundColor: 'white', borderRadius: '8px' }}>
         <thead>
           <tr>
-            <th>이름</th>
-            <th>가격</th>
+            <th>id</th>
+            <th>상품명</th>
+            <th>할인가</th>
+            <th>원가</th>
+            <th>할인율</th>
             <th>남은 시간</th>
+            <th>편의점</th>
+            <th>카테고리</th>
+            <th>평점</th>
           </tr>
         </thead>
+
         <tbody>
           {tempList.map((each) => (
             <tr key={each.id}>
+              <td>{each.id}</td>
               <td>{each.name}</td>
               <td>{each.saleprice}</td>
+              <td>{each.price}</td>
+              <td>{each.salepercent}</td>
               <td>{each.dtime}</td>
+              <td>{each.storename}</td>
+              <td>{each.category}</td>
+              <td>{each.score}</td>
             </tr>
           ))}
         </tbody>
       </table>
-      <br />     <br />
-      <Link to="/create">Create</Link>
-      <br />
-      <Link to="/update">Update</Link>
-      <br />
-      <Link to="/delete">Delete</Link>
-      <br /><br />
-
-      <Link to='/'>go to main page</Link>
-
+      <div className="linking">
+        <Link to="/" className="link">사용자 화면으로 돌아가기</Link>
+      </div>
     </>
   )
 }

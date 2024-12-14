@@ -7,6 +7,7 @@ import Detail from "./components/Detail.js";
 import Delete from "./components/Delete.js";
 import Create from "./components/Create.js";
 import Manager from "./components/Manager.js";
+import WaterMeasurePage from "./components/WaterMeasurePage.jsx";
 
 export default function Router() {
     return (
@@ -20,6 +21,8 @@ export default function Router() {
                 <Route path='/create' element={<Create />} />
                 <Route path='/manage' element={<Manager />} />
                 <Route path='/detail/:id' element={<Detail />} />
+                <Route path='/WaterMeasurePage' element={<WaterMeasurePage />} />
+
             </Routes>
         </BrowserRouter>
     );

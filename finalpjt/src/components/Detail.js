@@ -24,12 +24,20 @@ export default function Detail() {
 
   return (
     <>
-      <h1>{selected.name}</h1>
-      <div>판매 가격: {selected.saleprice}</div>
-      <div>날짜: {selected.dtime}</div>
-      <div>카테고리: {selected.category}</div>
+      <div className="detail">
+        <h1>{selected.name}</h1>
+        <div className="detailinfo">    <span>판매 가격 </span>  {selected.saleprice}</div>
+        <div className="detailinfo"> <span>원가 </span> {selected.price}</div>
+        <div className="detailinfo"> <span>할인율 </span>{selected.salepercent}</div>
+        <div className="detailinfo"><span>폐기까지 남은 시간 </span> {selected.dtime}</div>
+        <div className="detailinfo"><span>편의점 </span> {selected.storename}</div>
+        <div className="detailinfo"><span>카테고리 </span> {selected.category}</div>
+        <div className="detailinfo"><span>평점 </span> {selected.score}</div>
+      </div>
       <br />
-      <Link to="/">목록으로 돌아가기</Link>
+      <div className="linking">
+        <Link to="/" className="link">목록으로 돌아가기</Link>
+      </div>
     </>
   );
 }

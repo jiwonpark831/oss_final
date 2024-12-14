@@ -19,15 +19,18 @@ export default function Delete() {
     }
     return (
         <>
-            <h1>Delete page</h1 >
-            <div>
-                <label>ID:</label>
-                <input type="text" value={id} onChange={(e) => setId(e.target.value)} />
-                <button onClick={axios_delete}>Delete</button>
+            <h1>상품 삭제</h1 >
+            <div className="fieldd">
+                <label>ID</label>
+                <input type="text" value={id} onChange={(e) => setId(e.target.value)} className="inputstyle" />
             </div>
-            <br />    <br />
-            <Link to="/manage">뒤로가기</Link>
-            <br />    <br />
+            <br />
+            <button className="button submit" onClick={axios_delete}>상품 삭제하기</button>
+            <br />
+            <div className="linking">
+                <Link to="/manage" className="link">매니저 모드로 돌아가기</Link>
+            </div>
+
         </>
 
     )

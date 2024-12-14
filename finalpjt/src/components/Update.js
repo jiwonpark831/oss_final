@@ -12,6 +12,7 @@ export default function Update() {
     const dtimeR = useRef();
     const storenameR = useRef();
     const categoryR = useRef();
+    const scoreR = useRef();
 
     const updateList = () => {
         if (!nameR.current.value) {
@@ -38,7 +39,8 @@ export default function Update() {
             salepercent: salepercentR.current.value,
             dtime: dtimeR.current.value,
             storename: storenameR.current.value,
-            category: categoryR.current.value
+            category: categoryR.current.value,
+            score: scoreR.current.value
         };
 
         axios.put(`https://672818a9270bd0b975544f25.mockapi.io/api/v1/finalproject/${id}`, dataUpdate)
@@ -53,44 +55,53 @@ export default function Update() {
 
     return (
         <>
-            <h1>Update page</h1>
-            <div>
-                <p>ID:</p>
-                <input type="text" value={id} onChange={(e) => setId(e.target.value)} />
+            <h1>상품 수정</h1>
+            <div className="fieldd">
+                <label>ID</label>
+                <input type="text" value={id} onChange={(e) => setId(e.target.value)} className="inputstyle" />
             </div>
 
-            <div>
-                <p>상품명:</p>
-                <input ref={nameR} type="text" />
+            <div className="fieldd">
+                <label>상품명</label>
+                <input ref={nameR} type="text" className="inputstyle" />
             </div>
-            <div>
-                <p>가격:</p>
-                <input ref={salepriceR} type="number" />
+            <div className="fieldd">
+                <label>가격</label>
+                <input ref={salepriceR} type="number" className="inputstyle" />
             </div>
-            <div>
-                <p>원가:</p>
-                <input ref={priceR} type="number" />
+            <div className="fieldd">
+                <label>원가</label>
+                <input ref={priceR} type="number" className="inputstyle" />
             </div>
-            <div>
-                <p>할인율:</p>
-                <input ref={salepercentR} type="number" />
+            <div className="fieldd">
+                <label>할인율</label>
+                <input ref={salepercentR} type="number" className="inputstyle" />
             </div>
-            <div>
-                <p>폐기까지 남은 시간:</p>
-                <input ref={dtimeR} type="number" />
+            <div className="fieldd">
+                <label>폐기까지 남은 시간</label>
+                <input ref={dtimeR} type="number" className="inputstyle" />
             </div>
-            <div>
-                <p>편의점 이름:</p>
-                <input ref={storenameR} type="text" />
+            <div className="fieldd">
+                <label>편의점 이름</label>
+                <input ref={storenameR} type="text" className="inputstyle" />
             </div>
-            <div>
-                <p>카테고리:</p>
-                <input ref={categoryR} type="text" />
+            <div className="fieldd">
+                <label>카테고리</label>
+                <input ref={categoryR} type="text" className="inputstyle" />
             </div>
-            <button onClick={updateList}>Update</button>
-            <br />    <br />
-            <Link to="/manage">뒤로가기</Link>
-            <br />    <br />
+            <div className="fieldd">
+                <label>평점</label>
+                <input ref={scoreR} type="number" className="inputstyle" />
+            </div>
+            <br />
+            <br />
+            <button className="button submit" onClick={updateList}>상품 수정하기</button>
+
+            <br />
+            <div className="linking">
+                <Link to="/manage" className="link">매니저 모드로 돌아가기</Link>
+            </div>
+
         </>
     )
 }
